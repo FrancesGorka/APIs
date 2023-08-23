@@ -1,0 +1,36 @@
+from dataclasses import dataclass
+
+@dataclass
+class Temperature:
+    temperature: float 
+
+    def convert_temp(self):
+        return (self.temperature*9/5)+32
+
+    def check_temp(self):
+        return self.temperature>-273 and self.temperature < 3000
+    
+    @classmethod
+    def create_instance(cls,temperature):
+        return cls(temperature)
+    
+    @classmethod
+    def standard(cls):
+        return cls(0)
+    
+    @property
+    def temperature(self):
+        return self._temperature
+
+    @temperature.setter
+    def temperature(self, temperature):
+        self._temperature = temperature
+    
+    @temperature.getter
+    def temperature(self, temperature):
+        return self._temperature
+
+    @temperature.deleter
+    def temperature(self, temperature):
+        del self._temperature
+
